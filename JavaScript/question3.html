@@ -1,0 +1,69 @@
+ <html> 
+
+	<head>
+	 	
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	 	
+	 	<link rel="stylesheet"  href="css/mystyle.css">
+	
+	 </head>
+
+
+	 <div class="hero-image">
+	  <div class="hero-text">
+	    <h1 class="display-3">Assignment</h1>
+	    <h2>Questioin 3</h2>
+
+	  </div>
+	</div> 
+
+	<br><br>
+
+
+
+    <label for="Q-A">A)Enter any string(small caps only)</label>
+    <input  class="form-control" id="Q-A" placeholder="eg.: hot"">
+  	<div class="alert alert-primary col-md-4 col-md-offset-4" role="alert" width="5" id="A-op">output</div>
+  	<button type="button" class="btn btn-primary " onclick="functionA()">Show output</button>
+
+  	<br><br>
+   <label for="Q-B">B) Enter array values in comma separated format (only numeric values will work)</label>
+    <input  class="form-control" id="Q-B" placeholder="eg.: 2,7,3,-1,8.2">
+  	<div class="alert alert-primary col-md-4 col-md-offset-4" role="alert" width="5" id="B-op1">sorted array:</div>
+  	<div class="alert alert-primary col-md-4 col-md-offset-4" role="alert" width="5" id="B-op2">filtered array(>10):</div>
+  	<div class="alert alert-primary col-md-4 col-md-offset-4" role="alert" width="5" id="B-op3">after adding 1 to each element:</div>
+  	<div class="alert alert-primary col-md-4 col-md-offset-4" role="alert" width="5" id="B-op4">sliced array(from index position 1 to 4):</div>
+  	<button type="button" class="btn btn-primary" onclick="functionB()">Show output</button>
+
+	
+</html>
+
+<script>
+	const functionA = ()=>{
+		let text=document.getElementById("Q-A").value; 
+		let reg = /^[hdn]ot(.*[hdn][o]+[t])?$/
+		document.getElementById("A-op").innerHTML = reg.test(text);
+	}
+
+	const functionB = ()=>{
+		let text=document.getElementById("Q-B").value; 
+		let temp = text.split(',')
+		let array = temp.map((val)=>parseFloat(val))
+		let b1 = array.sort((a,b)=>a-b)
+		let b2 = b1.filter((val)=>val>10)
+		let b3 = b2.map((val)=>val+1)
+		let b4 = b3.slice(1,5)
+			
+		document.getElementById("B-op1").innerHTML = 'sorted array: ' + b1.toString();
+		document.getElementById("B-op2").innerHTML = 'filtered array(>10): ' + b2.toString();
+		document.getElementById("B-op3").innerHTML = 'after adding 1 to each element: ' + b3.toString();
+		document.getElementById("B-op4").innerHTML = 'sliced array(from index position 1 to 4): ' + b4.toString();
+		console.log(b1)
+		console.log(b2)
+		console.log(b3)
+		console.log(b4)
+	}
+
+</script>

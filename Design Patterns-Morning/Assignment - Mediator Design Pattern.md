@@ -144,7 +144,7 @@ Successfully Landed.
 ```
 
 ### References
-https://sourcemaking.com/design_patterns/mediator
+https://sourcemaking.com/design_patterns/mediator<br/>
 https://www.geeksforgeeks.org/mediator-design-pattern/
 
 

@@ -1,0 +1,73 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+     
+    
+    <bean id="test" class="com.au2020.beans.Test" />
+    
+    
+     
+    <bean id="drawService" class="com.au2020.aop.ExecuteAroundMethod" />
+    
+    <bean id="triangle" class="com.au2020.beans.Triangle">
+        <property name="type" value="isosceles" />
+        <property name="pointA" ref="pointA" />
+        <property name="pointB" ref="pointB" />
+        <property name="pointC" ref="pointC" />
+        <property name="directorMap">
+            <map>
+                <entry key="Incenter" value-ref ="pointIncenter" />
+                <entry key="Centroid" value-ref="pointCentroid" />
+            </map>
+      </property>
+    </bean>
+     
+    <bean id="pointA" class="com.au2020.beans.Point" >
+    	<property name="x" value="0" />
+    	<property name="y" value="5" />
+    </bean>
+    
+    <bean id="pointB" class="com.au2020.beans.Point" >
+    	<property name="x" value="5" />
+    	<property name="y" value="0" />
+    </bean>
+    
+    <bean id="pointC" class="com.au2020.beans.Point" >
+    	<property name="x" value="0" />
+    	<property name="y" value="0" />
+    </bean>
+    
+    
+    <bean id="circle" class="com.au2020.beans.Circle">
+        <constructor-arg index="0" value="Circle"/>  
+        
+        <constructor-arg index="1">
+            <ref bean="pointCenter" />    
+        </constructor-arg>
+    	<constructor-arg index="2" value="15" type="Double"/>
+    </bean>
+    
+    <bean id="pointCenter" class="com.au2020.beans.Point" >
+    	<property name="x" value="0" />
+    	<property name="y" value="0" />
+    </bean>
+    
+    
+    <bean id="pointIncenter" class="com.au2020.beans.Point" >
+    	<property name="x" value="1.46"/>
+    	<property name="y" value="1.46"/>
+    </bean>
+    
+    <bean id="pointCentroid" class="com.au2020.beans.Point" >
+    	<property name="x" value="1.6"  />
+    	<property name="y" value="1.6"  />
+    </bean>
+    
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+</beans>
